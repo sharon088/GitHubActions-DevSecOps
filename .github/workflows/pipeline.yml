@@ -23,5 +23,4 @@ jobs:
 
     - name: Run Pylint (Code Quality Check)
       run: |
-        source venv/bin/activate
         pylint --fail-under=5 *.py
