@@ -83,5 +83,5 @@ jobs:
         docker pull docker.io/sharon088/simple_python_app:${{ env.DATE }}
         cosign verify --key env://COSIGN_PUBLIC_KEY ${{ env.IMAGE_DIGEST }}
       env:
-        COSIGN_KEY: ${{ secrets.COSIGN_PUBLIC_KEY }}
+        COSIGN_PUBLIC_KEY: ${{ secrets.COSIGN_PUBLIC_KEY }}
 
