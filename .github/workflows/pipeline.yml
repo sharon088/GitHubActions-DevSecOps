@@ -47,6 +47,9 @@ jobs:
     - name: Set env
       run: echo "DATE=$(date +%s)" >> $GITHUB_ENV
 
+    - name: Set up cosign
+      uses: sigstore/cosign-installer@main
+
     - name: Build and pust to registry
       uses: docker/build-push-action@v6
       with:
