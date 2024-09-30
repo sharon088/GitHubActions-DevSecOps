@@ -44,6 +44,6 @@ jobs:
     
     - name: Run Trivy vulnerability scanner
       uses: aquasecurity/trivy-action@0.20.0
-        with:
-          image-ref: 'sharon088/simple-python-app:latest'
+      with:
+        image-ref: 'sharon088/simple-python-app:latest'
 
