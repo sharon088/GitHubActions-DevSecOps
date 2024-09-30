@@ -19,7 +19,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install --no-cache-dir pylint bandit
+        pip install --no-cache-dir pylint
 
     - name: Run Pylint (Code Quality Check)
       run: |
