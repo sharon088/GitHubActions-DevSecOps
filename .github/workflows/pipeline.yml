@@ -65,9 +65,15 @@ jobs:
         image: sharon088/simple_python_app:${{ env.DATE }}
         args: --severity-threshold=critical
 
+    - name: Get image digest
+      id: get_digest
+      run: |
+        IMAGE_DIGEST=$(docker inspect --format='{{index .RepoDigests 0}}' docker.io/sharon088/simple_python_app:${{ env.DATE }})
+        echo "IMAGE_DIGEST=$IMAGE_DIGEST" >> $GITHUB_ENV
+
     - name: Sign container image with Cosign
       run: |
-        cosign sign --key env://COSIGN_KEY docker.io/sharon088/simple_python_app:${{ env.DATE }}
+        cosign sign --key env://COSIGN_KEY ${{ env.IMAGE_DIGEST }}
       env:
         COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
         COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
@@ -75,7 +81,7 @@ jobs:
     - name: Verify container image signature with Cosign
       run: |
         docker pull docker.io/sharon088/simple_python_app:${{ env.DATE }}
-        cosign verify --key env://COSIGN_KEY docker.io/sharon088/simple_python_app:${{ env.DATE }}
+        cosign verify --key env://COSIGN_KEY ${{ env.IMAGE_DIGEST }}
       env:
         COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
 
