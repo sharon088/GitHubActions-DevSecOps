@@ -1,0 +1,13 @@
+name: Simple python app
+
+on:
+  push:
+    branches: [ "feature" ]
+
+jobs:
+  deploy_maven_docker:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v4
