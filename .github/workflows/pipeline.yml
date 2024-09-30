@@ -19,8 +19,15 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install --no-cache-dir pylint
+        pip install --no-cache-dir pylint bandit
 
     - name: Run Pylint (Code Quality Check)
       run: |
         pylint --fail-under=3 *.py
+
+    - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/python-3.10@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=critical
