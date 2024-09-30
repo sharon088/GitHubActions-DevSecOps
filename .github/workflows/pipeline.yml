@@ -81,7 +81,7 @@ jobs:
     - name: Verify container image signature with Cosign
       run: |
         docker pull docker.io/sharon088/simple_python_app:${{ env.DATE }}
-        cosign verify --key env://COSIGN_KEY ${{ env.IMAGE_DIGEST }}
+        cosign verify --key env://COSIGN_PUBLIC_KEY ${{ env.IMAGE_DIGEST }}
       env:
-        COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
+        COSIGN_KEY: ${{ secrets.COSIGN_PUBLIC_KEY }}
 
