@@ -31,3 +31,11 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
           args: --severity-threshold=critical
+
+    - name: dependencies for docker
+    - uses: hadolint/hadolint-action@v3.1.0
+      with:
+        dockerfile: Dockerfile
+        failure-threshold: warning
+
+
