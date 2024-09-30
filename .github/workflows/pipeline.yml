@@ -26,8 +26,8 @@ jobs:
         pylint --fail-under=3 *.py
 
     - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/python-3.10@master
-        env:
+      uses: snyk/actions/python-3.10@master
+      env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
+      with:
           args: --severity-threshold=critical
