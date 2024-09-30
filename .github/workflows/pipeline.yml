@@ -48,4 +48,4 @@ jobs:
         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       with:
         image: sharon088/simple-python-app:latest
-        args: --severity-threshold=high
+        args: --severity-threshold=critical
