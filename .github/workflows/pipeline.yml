@@ -73,7 +73,7 @@ jobs:
 
     - name: Sign container image with Cosign
       run: |
-        cosign sign --key env://COSIGN_KEY ${{ env.IMAGE_DIGEST }}
+        cosign sign --yes --key env://COSIGN_KEY ${{ env.IMAGE_DIGEST }}
       env:
         COSIGN_KEY: ${{ secrets.COSIGN_KEY }}
         COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
