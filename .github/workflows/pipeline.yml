@@ -23,7 +23,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install --no-cache-dir bandit flake8
+        pip install --no-cache-dir bandit flake8 typing-extensions
 
     - name: Static Code Anaylist flake8
       run: |
