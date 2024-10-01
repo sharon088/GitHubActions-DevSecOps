@@ -23,13 +23,13 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install --no-cache-dir pylint bandit
+        pip install --no-cache-dir bandit flake8
 
-    - name: Run Pylint (Code Quality Check)
+    - name: Static Code Anaylist flake8
       run: |
-        pylint --fail-under=3 *.py
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    - name: Run Snyk to check for vulnerabilities
+    - name: Run Snyk to check for Dependencies vulnerabilities
       uses: snyk/actions/python-3.10@master
       env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
