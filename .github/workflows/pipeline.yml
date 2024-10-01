@@ -23,7 +23,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install --no-cache-dir pylint
+        pip install --no-cache-dir pylint bandit
 
     - name: Run Pylint (Code Quality Check)
       run: |
@@ -36,12 +36,9 @@ jobs:
       with:
           args: --severity-threshold=critical
 
-    - name: Bandit for SAST
-      uses: mdegis/bandit-action@v1.0
-      with: 
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        level: high
-        confidence: high
+    - name: Run Bandit for SAST
+      run: |
+          bandit -r . --level high
 
     - name: dependencies for docker
       uses: hadolint/hadolint-action@v3.1.0
