@@ -36,6 +36,12 @@ jobs:
       with:
           args: --severity-threshold=critical
 
+    - name: Bandit for SAST
+      with: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        level: high
+        confidence: high
+
     - name: dependencies for docker
       uses: hadolint/hadolint-action@v3.1.0
       with:
