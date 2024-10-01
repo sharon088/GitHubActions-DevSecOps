@@ -37,6 +37,7 @@ jobs:
           args: --severity-threshold=critical
 
     - name: Bandit for SAST
+      uses: mdegis/bandit-action@v1.0
       with: 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         level: high
