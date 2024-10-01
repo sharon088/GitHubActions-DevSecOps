@@ -38,7 +38,7 @@ jobs:
 
     - name: Run Bandit for SAST
       run: |
-          bandit -r . --level high
+          bandit -r . --severity-level high
 
     - name: dependencies for docker
       uses: hadolint/hadolint-action@v3.1.0
