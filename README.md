@@ -30,3 +30,26 @@ This project showcases a Python Flask application that is containerized using Do
    ```bash
    git clone https://github.com/your-username/simple-python-app.git
    cd simple-python-app
+
+2. Build and run the Docker container:
+   ```bash
+   docker build -t simple-python-app .
+   docker run -p 5000:5000 simple-python-app
+
+3. To use GitHub Actions for CI/CD, make sure you have the following secrets set up in your GitHub repository:
+   ```bash
+   - SNYK_TOKEN
+   - DOCKER_USERNAME
+   - DOCKER_PASSWORD
+   - COSIGN_KEY
+   - COSIGN_PASSWORD
+   - COSIGN_PUBLIC_KEY
+
+4. to run tests locally:
+   ```bash
+   flake8 .
+   bandit -r .
+
+## Setup
+
+
