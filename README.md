@@ -50,6 +50,16 @@ This project showcases a Python Flask application that is containerized using Do
    flake8 .
    bandit -r .
 
-## Setup
+## CI/CD Pipline
+
+This project utilizes GitHub Actions for continuous integration and deployment. The pipeline includes the following steps:
+
+1. Checkout Code: Fetch the code from the repository.
+2. Setup Python: Install Python dependencies.
+3. Static Code Analysis: Runs flake8 for code quality and bandit for security analysis.
+4. Vulnerability Scanning: Uses Snyk to identify any known vulnerabilities in dependencies.
+5. Docker Linting: Verifies the Dockerfile with Hadolint.
+6. Docker Image Build and Push: Builds and pushes the Docker image to Docker Hub.
+7. Image Signing and Verification: Signs and verifies the Docker image with Cosign for enhanced security.
 
 
